@@ -11,7 +11,7 @@ class Review extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'reviews_id',
+        'id',
         'comment',
         'rate',
         'date_times',
