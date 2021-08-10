@@ -11,7 +11,6 @@ class Course extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'id',
         'name',
         'icon',
         'description',
