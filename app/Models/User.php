@@ -9,8 +9,14 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
+    use SoftDeletes;
 
+    const ROLE = [
+        'student' => 0,
+        'teacher' => 1,
+    ];
     /**
      * The attributes that are mass assignable.
      *
@@ -20,6 +26,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'username',
+        'avatar',
+        'phone',
+        'date_of_birth',
+        'address',
+        'about_me',
+        'background',
     ];
 
     /**
@@ -40,4 +54,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'user_courses', 'lesson_id', 'user_id');
+    }
+
+    public function lessons()
+    {
+        return $this->belongsToMany(Lessons::class, 'users_lessons', 'lesson_id', 'user_id');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Reviews::class, 'user_id');
+    }
 }
