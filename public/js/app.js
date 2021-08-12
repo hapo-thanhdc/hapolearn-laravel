@@ -1882,6 +1882,8 @@ __webpack_require__.r(__webpack_exports__);
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./style */ "./resources/js/style.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
 /**
  * The following block of code may be used to automatically register your
@@ -1912,6 +1914,8 @@ var app = new Vue({
   \***********************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+/* provided dependency */ var __webpack_provided_window_dot_$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* provided dependency */ var __webpack_provided_window_dot_jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -1921,7 +1925,7 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 
 try {
   window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js").default;
-  window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+  __webpack_provided_window_dot_$ = __webpack_provided_window_dot_jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
   __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
 } catch (e) {}
@@ -1947,6 +1951,86 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/style.js":
+/*!*******************************!*\
+  !*** ./resources/js/style.js ***!
+  \*******************************/
+/***/ (() => {
+
+$(document).ready(function () {
+  $('.feed-slide').slick({
+    infinite: true,
+    slidesToShow: 2,
+    slidesToScroll: 2,
+    autoplay: true,
+    prevArrow: "<div class='arrow-left'><i class='fas fa-angle-left'></i></div>",
+    nextArrow: "<div class='arrow-right'><i class='fas fa-angle-right'></i></div>",
+    responsive: [{
+      breakpoint: 769,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }]
+  });
+  $('.social-link .icon').click(function () {
+    var item = $(this).parent();
+
+    if ($(item).hasClass('active')) {
+      $(item).removeClass('active');
+    } else {
+      var socialLink = $(item).parents('.social-link');
+      socialLink.find('li .item').removeClass('active');
+      $(item).addClass('active');
+    }
+  });
+  $('.messenger-icon').click(function () {
+    $(this).parents('.messenger-wrapper').find('.messenger-body').toggleClass('active');
+  });
+  $('.messenger-close').click(function () {
+    $(this).parents('.messenger-body').removeClass('active');
+  });
+  $('#loginModal').click(function () {
+    this.modal('show');
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  });
+  $('.nav-item').click(function () {
+    var menu = $(this).parent();
+    menu.find("li").removeClass('active');
+    $(this).addClass('active');
+    console.log('test');
+    $("#hideheader").hide();
+    $("#showheader").show();
+  });
+  $('#hideheader').click(function () {
+    $('#showheader').show();
+    $(this).hide();
+
+    if ($(window).width() < 417) {
+      $('#header').removeClass('active');
+    }
+  });
+  $('#showheader').click(function () {
+    $('#hideheader').show();
+    $(this).hide();
+
+    if ($(window).width() < 417) {
+      $('#header').addClass('active');
+    }
+  });
+  $('.navbar-nav>li>a').on('click', function () {
+    $('.navbar-collapse').collapse('hide');
+
+    if ($(window).width() < 417) {
+      $('#header').removeClass('active');
+    }
+  });
+});
 
 /***/ }),
 

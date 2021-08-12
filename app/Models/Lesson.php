@@ -20,12 +20,12 @@ class Lesson extends Model
 
     public function courses()
     {
-        return $this->belongsTo(Course::class);
+        return $this->belongsTo(Course::class, 'course_id', 'id');
     }
 
     public function reviewss()
     {
-        return $this->hasMany(Reviews::class, 'lesson_id');
+        return $this->hasMany(Reviews::class, 'lesson_id', 'id')->where('course_id', null);
     }
 
     public function users()

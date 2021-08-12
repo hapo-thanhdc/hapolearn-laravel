@@ -14,6 +14,8 @@ class Course extends Model
         'name',
         'icon',
         'description',
+        'lessons',
+        'learners',
         'times',
         'quizzes',
         'price',
@@ -21,21 +23,21 @@ class Course extends Model
 
     public function lessons()
     {
-        return $this->hasMany(Lesson::class, 'course_id');
+        return $this->hasMany(Lesson::class, 'course_id', 'id');
     }
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'course_id', 'tag_id');
+        return $this->belongsToMany(Tag::class, 'course_tag', 'course_id', 'tag_id');
     }
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'course_id', 'user_id');
+        return $this->belongsToMany(User::class, 'user_course', 'course_id', 'user_id');
     }
 
     public function reviews()
     {
-        return $this->hasMany(Review::class, 'course_id');
+        return $this->hasMany(Review::class, 'course_id', 'reviews_id')->where('lesson_id', null);
     }
 }
