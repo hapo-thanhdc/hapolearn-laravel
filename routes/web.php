@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +21,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('hapolearn', function () {
-    return view('hapolearn');
-});
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/hapolearn', [App\Http\Controllers\HomHapolearnController::class, 'index'])->name('home');
+Route::post('/api/login', [LoginController::class, 'userLogin'])->name('api.login');
+Route::post('/api/register', [RegisterController::class, 'userRegister'])->name('api.register');
+Route::get('/api/logout', [LoginController::class, 'userLogout'])->name('api.logout');

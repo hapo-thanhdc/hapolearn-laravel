@@ -11493,6 +11493,13 @@ ul li {
   background-color: #B2D235;
 }
 
+.validate {
+  margin-left: 30px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #e3342f;
+}
+
 @media (max-width: 468px) {
   .modal-content {
     width: 100;

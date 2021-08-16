@@ -14,6 +14,6 @@ mix.autoload({ 'jquery': ['window.$', 'window.jQuery'] });
 mix.js('resources/js/app.js', 'public/js')
     .vue()
     .sass('resources/sass/app.scss', 'public/css')
-    .copy('resourses/assets/image', 'public/image')
-    .copy('resourses/assets/fonts', 'public/fonts');
+    .copy('resources/assets/image', 'public/image')
+    .copy('resources/assets/fonts', 'public/fonts');
   

@@ -28,12 +28,22 @@
                             <li class="nav-item menu-item-mobile ">
                                 <a class="nav-link" href="#">LESSONDETAIL</a>
                             </li>
+                            @if (!session('user'))
                             <li class="nav-item menu-item">
                                 <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">LOGIN/REGISTER</a>
                             </li>
                             <li class="nav-item menu-item">
                                 <a class="nav-link" href="#">PROFILE</a>
                             </li>
+                            @else 
+                            <li class="nav-item menu-item">
+                                <a class="nav-link" href="#">PROFILE</a>
+                            </li>
+                            <li class="nav-item menu-item">
+                                <a class="nav-link" href="{{ URL::to('/api/logout')}}">LOGOUT</a>
+                            </li>
+                            </form>
+                            @endif
                         </ul>
                     </div>
                 </nav>
@@ -490,21 +500,31 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
                         <form class="login-form">
+                            <div class="validate" id="loginError">
+                                <p class="errorLogin text-danger"></p>
+                            </div>
+                            <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                             <div class="form-group">
                                 <label for="inputUserNameLogin" class="form-group-title">Username:</label>
-                                <input type="text" class="form-control" id="inputUserNameLogin">
+                                <input type="text" class="form-control" id="inputUserNameLogin" name="usernamelogin" value="{{ old('username') }}">
+                            </div>
+                            <div class="validate" id="usernameloginError">
+                                <p class="errorLogin text-danger"></p>
                             </div>
                             <div class="form-group">
                                 <label for="inputPasswordLoign" class="form-group-title">Password:</label>
-                                <input type="password" class="form-control" id="inputPasswordLogin">
+                                <input type="password" class="form-control" id="inputPasswordLogin" name="passwordlogin">
+                            </div>
+                            <div class="validate" id="passwordloginError">
+                                <p class="errorPassword text-danger"></p>
                             </div>
                             <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="check">
+                                <input type="checkbox" class="form-check-input" id="check" name="isRemember">
                                 <label class="form-check-label" for="check">Remember me</label>
                                 <a href="#" class="forgot-pw-link">Forgot password</a>
                             </div>
                             <div class="button-login">
-                                <button type="submit" class="btn btn-primary login-button">LOGIN</button>
+                                <button type="submit" class="btn btn-primary login-button" id="loginBtn">LOGIN</button>
                             </div>
                             <div class="social-title">
                                 <div class="line">
@@ -521,24 +541,38 @@
                     </div>
                     <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
                         <form class="register-form">
+                            @csrf
+                            <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                             <div class="form-group">
                                 <label for="inputUserName" class="form-group-title">Username:</label>
-                                <input type="text" class="form-control" id="inputUserName">
+                                <input type="text" class="form-control" id="inputUserName" name="username" required>
+                            </div>
+                            <div class="validate" id="usernameError">
+                                <p class="message text-danger"></p>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail" class="form-group-title">Email:</label>
-                                <input type="text" class="form-control" id="inputEmail">
+                                <input type="email" class="form-control" id="inputEmail" name='email' required>
+                            </div>
+                            <div class="validate" id="emailError">
+                                <p class="message text-danger"></p>
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword" class="form-group-title">Password:</label>
-                                <input type="password" class="form-control" id="inputPassword">
+                                <input type="password" class="form-control" id="inputPassword" name="password">
+                            </div>
+                            <div class="validate" id="passwordError">
+                                <p class="message text-danger"></p>   
                             </div>
                             <div class="form-group">
                                 <label for="inputRepeatPassword" class="form-group-title">Repeat Password:</label>
-                                <input type="password" class="form-control" id="inputRepeatPassword">
+                                <input type="password" class="form-control" id="inputRepeatPassword" name="repeat">
+                            </div>
+                            <div class="validate" id="repeatError">
+                                <p class="message error text-danger"></p>
                             </div>
                             <div class="button-register">
-                                <button type="submit" class="btn btn-primary register-button">Register</button>
+                                <button type="submit" class="btn btn-primary register-button" id="registerBtn">Register</button>
                             </div>
                         </form>
                     </div>

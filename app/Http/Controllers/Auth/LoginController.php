@@ -4,37 +4,32 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use DB;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
-    use AuthenticatesUsers;
-
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    // protected $redirectTo = '/hapo';
+    public function userLogin(Request $req)
     {
-        $this->middleware('guest')->except('logout');
+        $req->validate([
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+        $user = User::where('email', $req->username)->first();
+        if (!$user || !Hash::check($req->password, $user->password)) {
+            return response()->json(['error_message' => 'Username or password is not match'], 401);
+        }
+        $req->session()->put('user', $user);
+        return response()->json(['success' => 'asdasda']);
+    }
+
+    public function userLogout(Request $req)
+    {
+        $req->session()->forget('user');
+        return redirect()->route('home');
     }
 }

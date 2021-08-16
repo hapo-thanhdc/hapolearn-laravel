@@ -11,7 +11,6 @@ class User extends Authenticatable
 {
     use HasFactory;
     use Notifiable;
-    use SoftDeletes;
 
     const ROLE = [
         'student' => 0,

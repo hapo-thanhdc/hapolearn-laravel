@@ -35,18 +35,10 @@ $(document).ready(function() {
     $(this).parents('.messenger-body').removeClass('active');
   })
 
-  $('#loginModal').click(function() {
-    this.modal('show');
-    $(function() {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
-  })
-
   $('.nav-item').click(function() {
     var menu = $(this).parent();
     menu.find("li").removeClass('active');
     $(this).addClass('active');
-    console.log('test');
     $("#hideheader").hide();
     $("#showheader").show();
   })
@@ -78,4 +70,82 @@ $(document).ready(function() {
     }
   });
 
+})
+
+$("#loginBtn").unbind('click').on('click', function(e) {
+  e.preventDefault();
+  let usernamelogin = $("#inputUserNameLogin").val();
+  let passwordlogin = $("#inputPasswordLogin").val();
+  $(".validate").html("");
+  if (usernamelogin.length === 0){
+    $("#usernameloginError").html(`<p>Username in valid</p>`);
+  }else if(passwordlogin.length === 0) {
+    $("#passwordloginError").html(`<p>Password in valid</p>`);
+  } else {
+    let data = {
+      username: usernamelogin, 
+      password: passwordlogin,
+      "_token": $("#token").val(),
+    };
+      $.ajax({
+        type: "POST",
+        url: "/api/login",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        success: function (res) {
+          window.location.href = '/hapolearn';
+          
+        },
+        error: function(res){
+          let message = res.responseJSON.error_message;
+          $("#usernameloginError").text(message); 
+      }
+  });
+}
+})
+
+function openlogin() {
+  $("#login-tab").click();
+}
+
+$("#registerBtn").unbind('click').on('click', function(e) {
+  e.preventDefault();
+  let username = $("#inputUserName").val();
+  let email = $("#inputEmail").val();
+  let password = $("#inputPassword").val();
+  let repeat = $("#inputRepeatPassword").val();
+  $(".validate").html("");
+  if (username.length === 0){
+    $("#usernameError").html(`<p>Username in valid</p>`);
+  }else if(email.length === 0) {
+    $("#emailError").html(`<p>Email in valid</p>`);
+  }else if(password.length === 0) {
+    $("#passwordError").html(`<p>Password in valid</p>`);
+  }else if(repeat.length === 0) {
+    $("#repeatError").html(`<p>RepeatPassword in valid</p>`);
+  }else if(password !== repeat){
+    $("#repeatError").html(`<p>Password do not match</p>`);
+  }else{
+    let data = {
+      username, 
+      password,
+      email,
+      repeat,
+      "_token": $("#token").val(),
+    }
+    $.ajax({
+      type: "POST",
+      url: "/api/register",
+      data: JSON.stringify(data),
+      contentType: "application/json",
+      success: function (res) {
+        if(res.error) {
+          $("#repeatError").text(res.error);
+        }
+        if(res.success) {
+          openlogin();
+        }
+      },
+    });
+  } 
 })
