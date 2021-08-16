@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
     use HasFactory;
     use Notifiable;
+    use SoftDeletes;
 
     const ROLE = [
         'student' => 0,
@@ -62,7 +63,7 @@ class User extends Authenticatable
 
     public function lessons()
     {
-        return $this->belongsToMany(Lessons::class, 'users_lessons', 'lesson_id', 'user_id');
+        return $this->belongsToMany(Lesson::class, 'users_lessons', 'lesson_id', 'user_id');
     }
 
     public function reviews()

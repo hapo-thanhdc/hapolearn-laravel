@@ -28,22 +28,22 @@
                             <li class="nav-item menu-item-mobile ">
                                 <a class="nav-link" href="#">LESSONDETAIL</a>
                             </li>
-                            @if (!session('user'))
-                            <li class="nav-item menu-item">
-                                <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">LOGIN/REGISTER</a>
-                            </li>
-                            <li class="nav-item menu-item">
-                                <a class="nav-link" href="#">PROFILE</a>
-                            </li>
-                            @else 
+                            @guest
+                                <li class="nav-item menu-item">
+                                    <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">LOGIN/REGISTER</a>
+                                </li>
+                            @endguest
                             <li class="nav-item menu-item">
                                 <a class="nav-link" href="#">PROFILE</a>
                             </li>
-                            <li class="nav-item menu-item">
-                                <a class="nav-link" href="{{ URL::to('/api/logout')}}">LOGOUT</a>
-                            </li>
-                            </form>
-                            @endif
+                            @auth
+                                <li class="nav-item menu-item">
+                                    <form class="d-inline" method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button type="submit" class="nav-link">LOG OUT</button>
+                                    </form>
+                                </li>
+                            @endauth
                         </ul>
                     </div>
                 </nav>
@@ -198,7 +198,7 @@
 
     <section class="why-hapolearn">
         <div class="image-laptop">
-            <img src="{{ asset('image/laptop.png') }}" alt="laptop-background">   
+            <img src="{{ asset('image/laptop.png') }}" alt="laptop-background">
         </div>
         <div class="container container-custom">
             <div class="why-hapolearn-wrapper">
@@ -355,7 +355,7 @@
                     <span class="counter">2,689</span>
                 </div>
                 <div class="col-xl-4 col-md-4">
-                    <p>Learners</p> 
+                    <p>Learners</p>
                     <span class="counter">16,882</span>
                 </div>
             </div>
@@ -442,12 +442,12 @@
                                     </div>
                                 </li>
                             </ul>
-                        </div>            
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="footer-end"> 
+        <div class="footer-end">
             <p>© 2020 HapoLearn, Inc. All rights reserved.</p>
         </div>
     </footer>
@@ -467,7 +467,7 @@
                     <div class="message-wrapper">
                         <p class="name">HapoLearn</p>
                         <div class="message">
-                            <p>HapoLearn xin chào bạn. 
+                            <p>HapoLearn xin chào bạn.
                                 Bạn có cần chúng tôi hỗ trợ gì không? </p>
                         </div>
                     </div>
@@ -499,32 +499,33 @@
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
-                        <form class="login-form">
-                            <div class="validate" id="loginError">
-                                <p class="errorLogin text-danger"></p>
-                            </div>
-                            <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+                        <form class="login-form" method="POST" action="{{route('login')}}">
+                            @csrf
                             <div class="form-group">
                                 <label for="inputUserNameLogin" class="form-group-title">Username:</label>
-                                <input type="text" class="form-control" id="inputUserNameLogin" name="usernamelogin" value="{{ old('username') }}">
+                                <input type="email" class="form-control" id="inputUserNameLogin" name="username" value="{{ old('username') }}">
                             </div>
-                            <div class="validate" id="usernameloginError">
-                                <p class="errorLogin text-danger"></p>
-                            </div>
+                            @error('username')
+                                <div class="validate">
+                                    <p class="errorLogin text-danger">{{ $message }}</p>
+                                </div>
+                            @enderror
                             <div class="form-group">
                                 <label for="inputPasswordLoign" class="form-group-title">Password:</label>
-                                <input type="password" class="form-control" id="inputPasswordLogin" name="passwordlogin">
+                                <input type="password" class="form-control" id="inputPasswordLogin" name="password">
                             </div>
-                            <div class="validate" id="passwordloginError">
-                                <p class="errorPassword text-danger"></p>
-                            </div>
+                            @error('password')
+                                <div class="validate">
+                                    <p class="errorLogin text-danger">{{ $message }}</p>
+                                </div>
+                            @enderror
                             <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="check" name="isRemember">
+                                <input type="checkbox" class="form-check-input" id="check" name="isRemember" >
                                 <label class="form-check-label" for="check">Remember me</label>
                                 <a href="#" class="forgot-pw-link">Forgot password</a>
                             </div>
                             <div class="button-login">
-                                <button type="submit" class="btn btn-primary login-button" id="loginBtn">LOGIN</button>
+                                <button type="submit" class="btn btn-primary login-button" id="login-btn">LOGIN</button>
                             </div>
                             <div class="social-title">
                                 <div class="line">
@@ -540,39 +541,46 @@
                         </form>
                     </div>
                     <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-                        <form class="register-form">
+                        <form class="register-form" method="POST" action="{{route('register')}}">
                             @csrf
-                            <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                             <div class="form-group">
                                 <label for="inputUserName" class="form-group-title">Username:</label>
-                                <input type="text" class="form-control" id="inputUserName" name="username" required>
+                                <input type="text" class="form-control" id="inputUserName" name="name">
                             </div>
-                            <div class="validate" id="usernameError">
-                                <p class="message text-danger"></p>
+                            @error('name')
+                            <div class="validate">
+                                <p class="errorLogin text-danger">{{ $message }}</p>
                             </div>
+                            @enderror
                             <div class="form-group">
                                 <label for="inputEmail" class="form-group-title">Email:</label>
-                                <input type="email" class="form-control" id="inputEmail" name='email' required>
+                                <input type="email" class="form-control" id="inputEmail" name='email'>
                             </div>
-                            <div class="validate" id="emailError">
-                                <p class="message text-danger"></p>
+                            @error('email')
+                            <div class="validate">
+                                <p class="errorLogin text-danger">{{ $message }}</p>
                             </div>
+                            @enderror
                             <div class="form-group">
                                 <label for="inputPassword" class="form-group-title">Password:</label>
                                 <input type="password" class="form-control" id="inputPassword" name="password">
                             </div>
-                            <div class="validate" id="passwordError">
-                                <p class="message text-danger"></p>   
+                            @error('password')
+                            <div class="validate">
+                                <p class="errorLogin text-danger">{{ $message }}</p>
                             </div>
+                            @enderror
                             <div class="form-group">
                                 <label for="inputRepeatPassword" class="form-group-title">Repeat Password:</label>
-                                <input type="password" class="form-control" id="inputRepeatPassword" name="repeat">
+                                <input type="password" class="form-control" id="inputRepeatPassword" name="password_confirmation">
                             </div>
-                            <div class="validate" id="repeatError">
-                                <p class="message error text-danger"></p>
+                            @error('password_confirmation')
+                            <div class="validate">
+                                <p class="errorLogin text-danger">{{ $message }}</p>
                             </div>
+                            @enderror
                             <div class="button-register">
-                                <button type="submit" class="btn btn-primary register-button" id="registerBtn">Register</button>
+                                <button type="submit" class="btn btn-primary register-button" id="register-btn">Register</button>
                             </div>
                         </form>
                     </div>
@@ -583,4 +591,3 @@
 
 </body>
 
-</html>

@@ -20,9 +20,4 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/hapolearn', [App\Http\Controllers\HomHapolearnController::class, 'index'])->name('home');
-Route::post('/api/login', [LoginController::class, 'userLogin'])->name('api.login');
-Route::post('/api/register', [RegisterController::class, 'userRegister'])->name('api.register');
-Route::get('/api/logout', [LoginController::class, 'userLogout'])->name('api.logout');
+Route::get('/home', [App\Http\Controllers\HomeHapolearnController::class, 'index'])->name('home');

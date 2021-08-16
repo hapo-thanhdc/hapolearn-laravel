@@ -4,32 +4,72 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use DB;
 
 class LoginController extends Controller
 {
-    // protected $redirectTo = '/hapo';
-    public function userLogin(Request $req)
+    /*
+    |--------------------------------------------------------------------------
+    | Login Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles authenticating users for the application and
+    | redirecting them to your home screen. The controller uses a trait
+    | to conveniently provide its functionality to your applications.
+    |
+    */
+
+    use AuthenticatesUsers;
+
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    protected $redirectTo = RouteServiceProvider::HOME;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        $req->validate([
-            'username' => 'required',
-            'password' => 'required'
-        ]);
-        $user = User::where('email', $req->username)->first();
-        if (!$user || !Hash::check($req->password, $user->password)) {
-            return response()->json(['error_message' => 'Username or password is not match'], 401);
-        }
-        $req->session()->put('user', $user);
-        return response()->json(['success' => 'asdasda']);
+        $this->middleware('guest')->except('logout');
     }
 
-    public function userLogout(Request $req)
+    protected function guard()
     {
-        $req->session()->forget('user');
-        return redirect()->route('home');
+        return Auth::guard('web');
+    }
+
+
+    protected function validateLogin(Request $request)
+    {
+        $this->validate($request, [
+            'username' => 'required|email',
+            'password' => 'required',
+        ]);
+    }
+
+    public function attemptLogin(Request $request)
+    {
+        return Auth::guard('web')->attempt([
+            'email' => $request->username,
+            'password' => $request->password,
+        ], true);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/home');
     }
 }
