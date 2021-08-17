@@ -35,18 +35,10 @@ $(document).ready(function() {
     $(this).parents('.messenger-body').removeClass('active');
   })
 
-  $('#loginModal').click(function() {
-    this.modal('show');
-    $(function() {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
-  })
-
   $('.nav-item').click(function() {
     var menu = $(this).parent();
     menu.find("li").removeClass('active');
     $(this).addClass('active');
-    console.log('test');
     $("#hideheader").hide();
     $("#showheader").show();
   })
@@ -77,5 +69,4 @@ $(document).ready(function() {
       $('#header').removeClass('active');
     }
   });
-
 })
