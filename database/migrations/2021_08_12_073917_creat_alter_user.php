@@ -14,7 +14,8 @@ class CreatAlterUser extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('role')->default(0);
+            $table->string('username');
+            $table->integer('role');
             $table->string('avatar')->nullable();
             $table->string('phone')->nullable();
             $table->date('date_of_birth')->nullable();
@@ -33,12 +34,14 @@ class CreatAlterUser extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropIfExists('role');
-            $table->dropIfExists('avatar');
-            $table->dropIfExists('phone');
-            $table->dropIfExists('date_of_birth');
-            $table->dropIfExists('address');
-            $table->dropIfExists('about_me');
+            $table->dropColumn('username');
+            $table->dropColumn('role');
+            $table->dropColumn('avatar');
+            $table->dropColumn('phone');
+            $table->dropColumn('date_of_birth');
+            $table->dropColumn('address');
+            $table->dropColumn('about_me');
+            $table->dropColumn('delete_at');
         });
     }
 }

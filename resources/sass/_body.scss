@@ -443,7 +443,7 @@ ul {
 }
 
 .why-hapolearn {
-  background-image: url(/image/background_section4.png);
+  background-image: url('/image/background_section4.png');
   background-size: cover;
 }
 
@@ -1599,7 +1599,7 @@ ul {
 
 @media (max-width: 468px) {
   .modal-content {
-    width: 100;
+    width: 100px;
     margin-top: 80px;
     height: 650px;
     .login-google {

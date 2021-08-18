@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\LoginRequest;
 
 class LoginController extends Controller
 {
@@ -28,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -40,36 +41,27 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    protected function guard()
+    public function login(LoginRequest $request)
     {
-        return Auth::guard('web');
-    }
-
-
-    protected function validateLogin(Request $request)
-    {
-        $this->validate($request, [
-            'username' => 'required|email',
-            'password' => 'required',
-        ]);
-    }
-
-    public function attemptLogin(Request $request)
-    {
-        return Auth::guard('web')->attempt([
+        $credentials = [
             'email' => $request->username,
             'password' => $request->password,
-        ], true);
+        ];
+
+        $isLogined = Auth::attempt($credentials);
+        if (!$isLogined) {
+            $error = "Email or password you entered is incorrect";
+            return redirect()->back()->withErrors($error);
+        } else {
+            return redirect('/');
+        }
     }
 
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
-        return redirect('/home');
+        return redirect('/');
     }
 }

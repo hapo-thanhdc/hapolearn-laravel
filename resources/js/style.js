@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('.feed-slide').slick({
+  $('.feed-slide').not('.slick-initialized').slick({
     infinite: true,
     slidesToShow: 2,
     slidesToScroll: 2,
@@ -62,11 +62,19 @@ $(document).ready(function() {
     
   })
 
-  $('.navbar-nav>li>a').on('click', function(){
+  $('.navbar-nav > li > a').on('click', function () {
     $('.navbar-collapse').collapse('hide');
 
     if ($(window).width() < 417) {
       $('#header').removeClass('active');
     }
   });
+
+  const validation_text = $('.validate').children('p');
+  for (const validation of validation_text) {
+    if ($(validation).text().length !== 0) {
+      $('#loginBtn').click();
+      break;
+    }
+  }
 })
