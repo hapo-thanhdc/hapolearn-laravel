@@ -5,6 +5,8 @@
  */
 
 require('./bootstrap');
+require('slick-carousel');
+require('popper.js');
 require('./style');
 
 window.Vue = require('vue').default;
