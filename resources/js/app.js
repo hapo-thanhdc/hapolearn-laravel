@@ -5,7 +5,11 @@
  */
 
 require('./bootstrap');
+require('slick-carousel');
+require('popper.js');
 require('./style');
+import $ from "jquery";
+window.$ = window.jQuery = $;
 
 window.Vue = require('vue').default;
 

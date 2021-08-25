@@ -34,7 +34,7 @@ class CreatAlterUser extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColum('username');
+            $table->dropColumn('username');
             $table->dropColumn('role');
             $table->dropColumn('avatar');
             $table->dropColumn('phone');

@@ -25,7 +25,6 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "slick-carousel": "^1.8.1",
-        "vue-slick-carousel": "^1.0.6"
+        "slick-carousel": "^1.8.1"
     }
 }

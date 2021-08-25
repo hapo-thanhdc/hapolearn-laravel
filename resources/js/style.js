@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('.feed-slide').slick({
+  $('.feed-slide').not('.slick-initialized').slick({
     infinite: true,
     slidesToShow: 2,
     slidesToScroll: 2,
@@ -35,18 +35,10 @@ $(document).ready(function() {
     $(this).parents('.messenger-body').removeClass('active');
   })
 
-  $('#loginModal').click(function() {
-    this.modal('show');
-    $(function() {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
-  })
-
   $('.nav-item').click(function() {
     var menu = $(this).parent();
     menu.find("li").removeClass('active');
     $(this).addClass('active');
-    console.log('test');
     $("#hideheader").hide();
     $("#showheader").show();
   })
@@ -70,7 +62,7 @@ $(document).ready(function() {
     
   })
 
-  $('.navbar-nav>li>a').on('click', function(){
+  $('.navbar-nav > li > a').on('click', function () {
     $('.navbar-collapse').collapse('hide');
 
     if ($(window).width() < 417) {
@@ -78,4 +70,11 @@ $(document).ready(function() {
     }
   });
 
+  const validation_text = $('.validate').children('p');
+  for (const validation of validation_text) {
+    if ($(validation).text().length !== 0) {
+      $('#loginBtn').click();
+      break;
+    }
+  }
 })
