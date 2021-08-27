@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\UserLesson;
 
 class UserLessonSeeder extends Seeder
 {
@@ -13,6 +14,6 @@ class UserLessonSeeder extends Seeder
      */
     public function run()
     {
-        //
+        UserLesson::factory(100)->create();
     }
 }

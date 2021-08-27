@@ -11,12 +11,14 @@
                 </a>
                 <div class="collapse navbar-collapse justify-content-end header-navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav main-menu">
-                        <li class="nav-item menu-item active">
-                            <a class="nav-link" href="#">HOME</a>
+                        <li class="nav-item menu-item {{Request::is('/') ? 'active': ''}}">
+                            <a class="nav-link" href="/">HOME</a>
                         </li>
-                        <li class="nav-item menu-item ">
-                            <a class="nav-link" href="#">ALL/COURSES</a>
-                        </li>
+{{--                        <form class="form-inline" action="{{route('allcourses')}}" method="GET">--}}
+                            <li class="nav-item menu-item {{Request::is('allcourses') ? 'active': ''}}">
+                                <a class="nav-link" href="/allcourses">ALL/COURSES</a>
+                            </li>
+{{--                        </form>--}}
                         <li class="nav-item menu-item-mobile ">
                             <a class="nav-link" href="#">LIST LESSON</a>
                         </li>

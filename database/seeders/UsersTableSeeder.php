@@ -17,7 +17,9 @@ class UsersTableSeeder extends Seeder
             'name' => 'hapo',
             'email' => 'test@haposoft.com',
             'password' => bcrypt('12345678'),
-            'role' => '0',
+            'role' => '1',
         ]);
+
+        User::factory(100)->create();
     }
 }

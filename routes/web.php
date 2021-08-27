@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +18,10 @@ use App\Http\Controllers\Auth\RegisterController;
 Route::get('/', function () {
     return view('home');
 });
+//Route::get('allcourse', function () {
+//    return view('layouts.all_course');
+//});
 
+Route::get('allcourses', [CourseController::class, 'index']);
+Route::get('search', [CourseController::class, 'courseSearch'])->name('search');
 Auth::routes();

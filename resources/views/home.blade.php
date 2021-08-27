@@ -141,7 +141,7 @@
                 </div>
             </div>
             <div class="view-all-courses">
-                <a class="all-course" href="#">View All Our Courses <img src="{{ asset('image/view_all_courses.png') }}" alt="view-courses-image"></a>
+                <a class="all-course" href="/allcourses">View All Our Courses <img src="{{ asset('image/view_all_courses.png') }}" alt="view-courses-image"></a>
             </div>
         </div>
     </div>
