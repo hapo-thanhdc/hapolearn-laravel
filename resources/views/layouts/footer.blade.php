@@ -87,3 +87,4 @@
         <p>© 2020 HapoLearn, Inc. All rights reserved.</p>
     </div>
 </footer>
+@include('layouts.messenger')

@@ -51,27 +51,12 @@ class Course extends Model
 
     public function getCourseTimeAttribute()
     {
-        $totalTimeCourse = $this->lessons()->sum('time');
-        $hour = round($totalTimeCourse / config('constants.hour'));
-        return $hour;
+        return $this->lessons()->sum('times');
     }
 
     public function getNumberUserStudentAttribute()
     {
         return $this->users()->where('role', User::ROLE['student'])->count();
-    }
-
-    public function getRatingAttribute()
-    {
-        $avgRating = $this->Review()->avg('rate');
-        $integer_part = (int)$avgRating;
-        $decimal_part = $avgRating-$integer_part;
-        $rating = [
-            'integer' => $integer_part,
-            'decima' => $decimal_part,
-            'show' => round($avgRating, 2)
-        ];
-        return $rating;
     }
 
     public function scopeFilter($query, $data)
@@ -82,7 +67,7 @@ class Course extends Model
         }
 
         if (isset($data['sort'])) {
-            if ($data['sort'] == 'moinhat') {
+            if ($data['sort'] == config('constants.options.newest')) {
                 $query->orderByDesc('id');
             } else {
                 $query->orderBy('id');
@@ -124,9 +109,9 @@ class Course extends Model
         }
 
         if (isset($data['lessons'])) {
-            if ($data['lessons'] == 'tang') {
+            if ($data['lessons'] == config('constants.options.ascending')) {
                 $query->withCount(['lessons'])->orderBy('lessons_count')->get();
-            } else if ($data['lessons'] == 'giam') {
+            } elseif ($data['lessons'] == config('constants.options.decrease')) {
                 $query->withCount(['lessons'])->orderByDesc('lessons_count')->get();
             }
         }
@@ -141,7 +126,7 @@ class Course extends Model
             if ($data['review'] == config('constants.options.ascending')) {
                 $query->addSelect(['rate' => Review::selectRaw('avg(rate) as total')
                     ->whereColumn('course_id', 'courses.id')])
-                    ->orderBy('rating');
+                    ->orderBy('rate');
             } elseif ($data['review'] == config('constants.options.decrease')) {
                 $query->addSelect(['rate' => Review::selectRaw('avg(rate) as total')
                     ->whereColumn('course_id', 'courses.id')])

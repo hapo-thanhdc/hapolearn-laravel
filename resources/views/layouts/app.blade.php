@@ -23,7 +23,6 @@
     @include('layouts.header')
     @yield('content')
     @include('layouts.footer')
-    @include('layouts.messenger')
 
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://kit.fontawesome.com/ac80846b5c.js" crossorigin="anonymous"></script>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateCourseTable extends Migration
+class UpdateLessonTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class UpdateCourseTable extends Migration
      */
     public function up()
     {
-        Schema::table('course', function (Blueprint $table) {
-//            $table->dropColumn(['lessons', 'times']);
+        Schema::table('lessons', function (Blueprint $table) {
+            $table->float('times')->nullable();
         });
     }
 
@@ -22,12 +22,11 @@ class UpdateCourseTable extends Migration
      * Reverse the migrations.
      *
      * @return void
-    **/
+     */
     public function down()
     {
-        Schema::table('course', function (Blueprint $table) {
-            $table->integer('times')->default(0);
-            $table->integer('lessons')->default(0);
+        Schema::table('lessons', function (Blueprint $table) {
+            $table->dropColumn('times');
         });
     }
 }
