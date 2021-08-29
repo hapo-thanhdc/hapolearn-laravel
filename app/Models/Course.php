@@ -56,18 +56,30 @@ class Course extends Model
 
     public function getNumberUserStudentAttribute()
     {
-        return $this->users()->where('role', User::ROLE['student'])->count();
+        return $this->users()->where('role', config('constants.role.student'))->count();
+    }
+
+    public function scopeMainCourse($query)
+    {
+        $query->withCount(['users' => function ($subquery) {
+            $subquery->where('role', config('constants.role.student'));
+        }
+        ])->orderByDesc('users_count')->limit(3);
+    }
+
+    public function scopeOtherCourse($query)
+    {
+        $query->orderByDesc('id')->limit(3);
     }
 
     public function scopeFilter($query, $data)
     {
-        if (isset($data['key'])) {
-            $query->where('name', 'like', '%' . $data['key'] . '%')
-                ->orWhere('description', 'like', '%' . $data['key'] . '%');
+        if (isset($data['search_form_input'])) {
+            $query->where('name', 'like', '%' . $data['search_form_input'] . '%')
+                ->orWhere('description', 'like', '%' . $data['search_form_input'] . '%');
         }
-
-        if (isset($data['sort'])) {
-            if ($data['sort'] == config('constants.options.newest')) {
+        if (isset($data['newest_oldest'])) {
+            if ($data['newest_oldest'] == config('constants.options.newest')) {
                 $query->orderByDesc('id');
             } else {
                 $query->orderBy('id');

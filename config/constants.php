@@ -2,7 +2,12 @@
 
 return [
     'pagination' => 10,
-    'hour' => 60,
+
+    'role' => [
+        'teacher' => 1,
+        'student' => 0,
+    ],
+
     'options' => [
         'newest' => 'newest',
         'oldest' => 'oldest',

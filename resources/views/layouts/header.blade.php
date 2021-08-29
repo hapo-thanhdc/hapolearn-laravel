@@ -14,11 +14,9 @@
                         <li class="nav-item menu-item {{Request::is('/') ? 'active': ''}}">
                             <a class="nav-link" href="/">HOME</a>
                         </li>
-{{--                        <form class="form-inline" action="{{route('allcourses')}}" method="GET">--}}
                             <li class="nav-item menu-item {{Request::is('allcourses') ? 'active': ''}}">
                                 <a class="nav-link" href="/allcourses">ALL/COURSES</a>
                             </li>
-{{--                        </form>--}}
                         <li class="nav-item menu-item-mobile ">
                             <a class="nav-link" href="#">LIST LESSON</a>
                         </li>

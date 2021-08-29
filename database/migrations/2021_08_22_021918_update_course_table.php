@@ -14,7 +14,7 @@ class UpdateCourseTable extends Migration
     public function up()
     {
         Schema::table('course', function (Blueprint $table) {
-//            $table->dropColumn(['lessons', 'times']);
+            $table->dropColumn(['lessons', 'times']);
         });
     }
 

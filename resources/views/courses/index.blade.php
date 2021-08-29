@@ -10,7 +10,7 @@
                          aria-controls="multiCollapseExample1">
                 </div>
                 <div class="group-form col-8 col-sm-2 col-md-6 p-0 input-search-container">
-                    <input type="text" id="filter-search" class="form-control mr-sm-2 form-search" name="key"
+                    <input type="text" id="filter-search" class="form-control mr-sm-2 form-search" name="search_form_input"
                            placeholder="Search" aria-label="Search" @if (isset($keyword)) value={{ $keyword }} @endif>
                     <i class="fas fa-search search-icon"></i>
                 </div>
@@ -28,12 +28,12 @@
                         <div class="col-sm-3 btn-latest-oldest">
                             <input type="radio" class="btn-check inp-filter" value="{{config('constants.options.newest')}}"
                                    name="sort" id="success-outlined"
-                                    {{ request('sort') == "config('constants.options.newest')" ? 'checked' : '' }}>
+                                    {{ request('newest_oldest') == "config('constants.options.newest')" ? 'checked' : '' }}>
                             <label class="btn btn-latest label-radio" for="success-outlined">Latest</label>
 
                             <input type="radio" class="btn-check inp-filter" value="{{config('constants.options.oldest')}}"
                                    name="sort" id="danger-outlined"
-                                    {{ request('sort') == "config('constants.options.oldest')" ? 'checked' : '' }}>
+                                    {{ request('newest_oldest') == "config('constants.options.oldest')" ? 'checked' : '' }}>
                             <label class="btn btn-oldest label-radio" for="danger-outlined">Oldest</label>
                         </div>
                         <div class="col-sm-2 select-filter select-teacher ">
