@@ -22,8 +22,8 @@ class CourseController extends Controller
     public function courseSearch(Request $request)
     {
         $data = $request->all();
-        if (isset($data['key'])) {
-            $keyword = $data['key'];
+        if (isset($data['search_form_input'])) {
+            $keyword = $data['search_form_input'];
         } else {
             $keyword = '';
         }
