@@ -15,13 +15,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-//Route::get('allcourse', function () {
-//    return view('layouts.all_course');
-//});
-
+Route::get('/', [HomeController::class, 'index']);
 Route::get('allcourses', [CourseController::class, 'index']);
 Route::get('search', [CourseController::class, 'courseSearch'])->name('search');
 Auth::routes();

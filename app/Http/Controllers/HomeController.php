@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,6 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $mainCourses = Course::query()->mainCourse()->get();
+        $otherCourses = Course::query()->otherCourse()->get();
+        return view('home', compact(['mainCourses', 'otherCourses']));
     }
 }

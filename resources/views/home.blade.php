@@ -31,54 +31,24 @@
     <div class="list-course feature-course ">
         <div class="container container-custom">
             <div class="row course">
-                <div class="col-xl-4 col-lg-4 col-md-4">
-                    <div class="item">
-                        <div class="image-wrapper bg-html">
-                            <div class="image">
-                                <img src="{{ asset('image/html_img.png') }}" alt="html-image">
+                @foreach($mainCourses as $maincourse)
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <div class="item">
+                            <div class="image-wrapper bg-html">
+                                <div class="image">
+                                    <img src="{{ $maincourse->icon }}" alt="html-image">
+                                </div>
                             </div>
-                        </div>
-                        <div class="content">
-                            <div class="content-text">
-                                <p class="heading">HTML/CSS/js Tutorial</p>
-                                <p class="description">I knew hardly anything about HTML, JS, and CSS before entering New Media. I had coded quite a bit, but never touched anything in regards to web development.</p>
+                            <div class="content">
+                                <div class="content-text">
+                                    <p class="heading">{{ $maincourse->name }}</p>
+                                    <p class="description">{{ $maincourse->description }}</p>
+                                </div>
+                                <a href="#" class="btn btn-default">Take This Course</a>
                             </div>
-                            <a href="#" class="btn btn-default">Take This Course</a>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-4">
-                    <div class="item">
-                        <div class="image-wrapper bg-laravel">
-                            <div class="image">
-                                <img src="{{ asset('image/laravel_img.png') }}" alt="laravel-image">
-                            </div>
-                        </div>
-                        <div class="content">
-                            <div class="content-text">
-                                <p class="heading">LARAVEL Tutorial</p>
-                                <p class="description">I knew hardly anything about HTML, JS, and CSS before entering New Media. I had coded quite a bit, but never touched anything in regards to web development.</p>
-                            </div>
-                            <a href="#" class="btn btn-default">Take This Course</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-4">
-                    <div class="item">
-                        <div class="image-wrapper bg-php">
-                            <div class="image">
-                                <img src="{{ asset('image/php_img.png') }}" alt="php-image">
-                            </div>
-                        </div>
-                        <div class="content">
-                            <div class="content-text">
-                                <p class="heading">PHP Tutorial</p>
-                                <p class="description">I knew hardly anything about HTML, JS, and CSS before entering New Media. I had coded quite a bit, but never touched anything in regards to web development.</p>
-                            </div>
-                            <a href="#" class="btn btn-default">Take This Course</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -91,54 +61,24 @@
     <div class="list-course">
         <div class="container container-custom">
             <div class="row">
-                <div class="col-xl-4 col-lg-4 col-md-4">
+                @foreach($otherCourses as $otherCourse)
+                    <div class="col-xl-4 col-lg-4 col-md-4">
                     <div class="item">
                         <div class="image-wrapper bg-css">
                             <div class="image">
-                                <img src="{{ asset('image/css_img.png') }}" alt="css-image">
+                                <img src="{{ $otherCourse->icon }}" alt="css-image">
                             </div>
                         </div>
                         <div class="content">
                             <div class="content-text">
-                                <p class="heading">CSS Tutorial</p>
-                                <p class="description">I knew hardly anything about HTML, JS, and CSS before entering New Media,...</p>
+                                <p class="heading">{{ $otherCourse->name }}</p>
+                                <p class="description">{{ $otherCourse->description }}</p>
                             </div>
                             <a href="#" class="btn btn-default">Take This Course</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-4 col-md-4">
-                    <div class="item">
-                        <div class="image-wrapper bg-ruby">
-                            <div class="image">
-                                <img src="{{asset('image/ruby_img.png') }}" alt="ruby-image">
-                            </div>
-                        </div>
-                        <div class="content">
-                            <div class="content-text">
-                                <p class="heading">Ruby on rails Tutorial</p>
-                                <p class="description">I knew hardly anything about HTML, JS, and CSS before entering New Media,...</p>
-                            </div>
-                            <a href="#" class="btn btn-default">Take This Course</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-4">
-                    <div class="item">
-                        <div class="image-wrapper bg-java">
-                            <div class="image">
-                                <img src="{{ asset('image/java_img.png') }}" alt="java-image">
-                            </div>
-                        </div>
-                        <div class="content">
-                            <div class="content-text">
-                                <p class="heading">Java Tutorial Tutorial</p>
-                                <p class="description">I knew hardly anything about HTML, JS, and CSS before entering New Media,...</p>
-                            </div>
-                            <a href="#" class="btn btn-default">Take This Course</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="view-all-courses">
                 <a class="all-course" href="/allcourses">View All Our Courses <img src="{{ asset('image/view_all_courses.png') }}" alt="view-courses-image"></a>
