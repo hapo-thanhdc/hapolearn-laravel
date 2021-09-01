@@ -12,7 +12,7 @@
         @if (Auth::check() && $isJoined == true)
         <a href="#" class="btn-join-course" id="btn-joined-course">Joined the course</a>
         @else
-        <a href="/insert/{{$course->id}}" class="btn-join-course" id="btn-join-course">Join the course</a>
+        <a href="/insert/{{$course->id}}" class="btn-join-course" id="btn-join-course">Login and Join the course</a>
         @endif
     </div>
 </div>
@@ -21,7 +21,7 @@
         @foreach ($lessons as $key => $lesson)
         <div class="row">
             <div class="col-lg-8 pr-0">
-                <p class="txt-title-lessons">{{$key + 1}}. {{$lesson->title}}</p>
+                <p class="txt-title-lessons">{{$key + 1}}. {{$lesson->name}}</p>
             </div>
             <div class="col-lg-4 pl-0 btn-more-lessons">
                 @if (Auth::check() && $isJoined == true)

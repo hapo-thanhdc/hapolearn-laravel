@@ -29,7 +29,7 @@
     padding: 15px;
 
     .title-description {
-      font-family: $font_UTM_BryantLG;
+      font-family: "UTM";
       font-weight: 700;
       font-size: 25px;
       color: $txt-color;
@@ -41,7 +41,7 @@
     padding: 15px;
 
     .description {
-      font-family: $font_UTM_BryantLG;
+      font-family: "UTM";
       font-weight: 700;
       font-size: 18px;
       color: $txt-description-color;
@@ -82,7 +82,7 @@
   }
 
   .btn-nav-detail {
-    font-family: $font_UTM_BryantLG;
+    font-family: "UTM";
     font-weight: 700;
     font-size: 20px;
     color: $txt-color;
@@ -130,7 +130,7 @@
       border-radius: 5px;
       border: none;
       color: white;
-      font-family: $font_UTM_BryantLG;
+      font-family: "UTM";
       font-weight: bold;
       font-size: 18px;
 
@@ -150,7 +150,7 @@
       border-radius: 22px;
       border: unset;
       color: white;
-      font-family: $font_UTM_BryantLG;
+      font-family: "UTM";
       font-weight: bold;
       font-size: 18px;
 
@@ -165,7 +165,7 @@
 .show-lessons-container {
   .txt-title-lessons {
     padding: 20px 0;
-    font-family: $font_UTM_BryantLG;
+    font-family: "UTM";
     font-size: 18px;
     font-weight: bold;
     color: $txt-color;
@@ -189,7 +189,7 @@
       box-shadow: $box-shadow-btn;
       border-radius: 22px;
       color: white;
-      font-family: $font_UTM_BryantLG;
+      font-family: "UTM";
       font-size: 15px;
       font-weight: bold;
       width: 80px;
@@ -227,8 +227,8 @@
   .col-txt {
     p {
       margin: 0;
-      font-family: $font_UTM_BryantLG;
-      font-size: 25px;
+      font-family: "UTM";
+      font-size: 19px;
       color: $txt-color;
     }
   }
@@ -259,7 +259,7 @@
       padding: 15px;
       margin: 0;
       color: white;
-      font-family: $font_UTM_BryantLG;
+      font-family: "UTM";
       font-weight: bold;
       font-size: 25px;
     }
@@ -274,7 +274,7 @@
       margin: 0;
       font-size: 16px;
       font-weight: bold;
-      font-family: $font_UTM_BryantLG;
+      font-family: "UTM";
       border-bottom: 1px solid $txt-description-color;
     }
   }
@@ -288,7 +288,7 @@
       background: $bg-color;
       box-shadow: $box-shadow-btn;
       border-radius: 22px;
-      font-family: $font_UTM_BryantLG;
+      font-family: "UTM";
       font-size: 18px;
       color: white;
       font-weight: bold;
@@ -303,7 +303,7 @@
 
   .txt-main-teacher {
     p {
-      font-family: $font_UTM_BryantLG;
+      font-family: "UTM";
       color: $txt-color;
       font-size: 25px;
       font-weight: bold;
@@ -320,14 +320,20 @@
 
   .infor-mentor {
     .name-mentor {
-      font-family: $font_UTM_BryantLG;
+      font-family: "UTM";
       font-size: 18px;
       color: $txt-color;
       font-weight: bold;
     }
 
+    .social-mentor {
+      img {
+        width: 20px;
+      }
+    }
+
     .exp-mentor {
-      font-family: $font_UTM_BryantLG;
+      font-family: "UTM";
       font-size: 14px;
       color: $txt-description-color;
       padding-bottom: 5px;
@@ -336,7 +342,7 @@
 
   .description-mentor {
     p {
-      font-family: $font_UTM_BryantLG;
+      font-family: "UTM";
       font-size: 18px;
       color: $txt-description-color;
     }

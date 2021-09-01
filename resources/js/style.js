@@ -19,7 +19,6 @@ $(function () {
 
   $('.social-link .icon').click(function() {
     var item = $(this).parent();
-    console.log(item.hasClass('active'));
     if (item.hasClass('active')) {
         item.removeClass('active');
     } else {
@@ -90,4 +89,5 @@ $(function () {
     placeholder: 'Select an option',
     theme: 'bootstrap4',
   });
+
 })

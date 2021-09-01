@@ -59,6 +59,29 @@ class Course extends Model
         return $this->users()->where('role', config('constants.role.student'))->count();
     }
 
+    public function scopeTagsCourse($query, $id)
+    {
+        $query->leftJoin('course_tag', 'course.id', 'course_tag.course_id')
+            ->leftJoin('tags', 'course_tag.tag_id', 'tags.id')
+            ->where('course_tag.course_id', $id);
+    }
+
+    public function scopeTecherOfCourse($query, $id)
+    {
+        $query->leftJoin('user_course', 'course.id', 'user_course.course_id')
+            ->leftJoin('users', 'user_course.user_id', 'users.id')
+            ->where('users.role', User::ROLE['teacher'])
+            ->where('user_course.course_id', $id);
+    }
+
+    public function scopeInforLessons($query, $id)
+    {
+        $query->join('lessons', 'course.id', '=', 'lessons.course_id')
+            ->select('lessons.*')
+            ->where('lessons.course_id', '=', $id);
+    }
+
+
     public function scopeMainCourse($query)
     {
         $query->withCount(['users' => function ($subquery) {
@@ -145,5 +168,10 @@ class Course extends Model
                     ->orderByDesc('rate');
             }
         }
+    }
+
+    public function scopeShowOtherCourses($query, $courseId)
+    {
+        $query->where('id', '<>', $courseId)->limit(5);
     }
 }

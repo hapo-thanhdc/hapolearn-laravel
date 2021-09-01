@@ -6,7 +6,7 @@
                     <span class="navbar-toggler-icon" id="showheader"></span>
                     <span class="my-1 mx-1 close fa fa-times"  id="hideheader"></span>
                 </button>
-                <a class="navbar-brand align-items-end navbar-brand-img logo" href="#">
+                <a class="navbar-brand align-items-end navbar-brand-img logo" href="/">
                     <img src="{{ asset('image/hapo_learn_logo.png') }}" alt="hapolearn">
                 </a>
                 <div class="collapse navbar-collapse justify-content-end header-navbar-collapse" id="navbarSupportedContent">
