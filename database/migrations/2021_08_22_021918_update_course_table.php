@@ -26,7 +26,7 @@ class UpdateCourseTable extends Migration
     public function down()
     {
         Schema::table('course', function (Blueprint $table) {
-            $table->integer('times')->default(0);
+            $table->float('times')->nullable();
             $table->integer('lessons')->default(0);
         });
     }

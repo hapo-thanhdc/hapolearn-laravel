@@ -12,6 +12,10 @@ return [
         'newest' => 'newest',
         'oldest' => 'oldest',
         'ascending' => 'asc',
-        'decrease' => 'desc'
+        'descending' => 'desc'
+    ],
+
+    'course' => [
+        'limit' => 3,
     ],
 ];

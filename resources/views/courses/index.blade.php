@@ -6,11 +6,11 @@
             <div class="filter-and-search row">
                 <div class="filter-container">
                     <img class="filter-icon" src="{{asset('image/filter.png')}}" alt="filter" data-toggle="collapse"
-                         href="#multiCollapseExample1" role="button" aria-expanded="false"
-                         aria-controls="multiCollapseExample1">
+                         href="#filter" role="button" aria-expanded="false"
+                         aria-controls="filter">
                 </div>
                 <div class="group-form col-8 col-sm-2 col-md-6 p-0 input-search-container">
-                    <input type="text" id="filter-search" class="form-control mr-sm-2 form-search" name="search_form_input"
+                    <input type="text" id="filter-search" class="form-control mr-sm-2 form-search" name="keyword"
                            placeholder="Search" aria-label="Search" @if (isset($keyword)) value={{ $keyword }} @endif>
                     <i class="fas fa-search search-icon"></i>
                 </div>
@@ -19,7 +19,7 @@
                     <button class="btn btn-outline-success my-2 my-sm-0 btn-search" type="submit">Search</button>
                 </div>
             </div>
-            <div class="collapse container-fluid container-filter" id="multiCollapseExample1">
+            <div class="collapse container-fluid container-filter" id="filter">
                 <div class="container-fluid container-main-filter">
                     <div class="row p-0 row-filter-1">
                         <div class="col-sm-1 col-txt-filter">
@@ -51,8 +51,8 @@
                                 <option value="{{ config('constants.options.ascending') }}"
                                         @if (request('learner') == config('constants.options.ascending')) selected @endif>Ascending
                                 </option>
-                                <option value="{{ config('constants.options.decrease') }}"
-                                        @if (request('learner') == config('constants.options.decrease')) selected @endif>Decrease
+                                <option value="{{ config('constants.options.descending') }}"
+                                        @if (request('learner') == config('constants.options.descending')) selected @endif>descending
                                 </option>
                             </select>
                         </div>
@@ -62,8 +62,8 @@
                                 <option value="{{ config('constants.options.ascending') }}"
                                         @if (request('times') == config('constants.options.ascending')) selected @endif>Ascending
                                 </option>
-                                <option value="{{ config('constants.options.decrease') }}"
-                                        @if (request('times') == config('constants.options.decrease')) selected @endif>Decrease
+                                <option value="{{ config('constants.options.descending') }}"
+                                        @if (request('times') == config('constants.options.descending')) selected @endif>descending
                                 </option>
                             </select>
                         </div>
@@ -73,8 +73,8 @@
                                 <option value="{{ config('constants.options.ascending') }}"
                                         @if (request('lessons') == config('constants.options.ascending')) selected @endif>Ascending
                                 </option>
-                                <option value="{{ config('constants.options.decrease') }}"
-                                        @if (request('lessons') == config('constants.options.decrease')) selected @endif>Decrease
+                                <option value="{{ config('constants.options.descending') }}"
+                                        @if (request('lessons') == config('constants.options.descending')) selected @endif>descending
                                 </option>
                             </select>
                         </div>
@@ -96,8 +96,8 @@
                                 <option value="{{ config('constants.options.ascending') }}"
                                         @if (request('review') == config('constants.options.ascending')) selected @endif>Ascending
                                 </option>
-                                <option value="{{ config('constants.options.decrease') }}"
-                                        @if (request('review') == config('constants.options.decrease')) selected @endif>Decrease
+                                <option value="{{ config('constants.options.descending') }}"
+                                        @if (request('review') == config('constants.options.descending')) selected @endif>descending
                                 </option>
                             </select>
                         </div>

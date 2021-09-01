@@ -17,5 +17,5 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('allcourses', [CourseController::class, 'index']);
-Route::get('search', [CourseController::class, 'courseSearch'])->name('search');
+Route::get('search', [CourseController::class, 'search'])->name('search');
 Auth::routes();

@@ -29,7 +29,7 @@ class ReviewFactory extends Factory
             'course_id' => Course::all()->random()->id,
             'lesson_id' => Lesson::all()->random()->id,
             'comment' => $this->faker->realText(),
-            'rate' => 4.2,
+            'rate' => rand(1, 5),
             'date_times' => $this->faker->dateTimeThisMonth()
         ];
     }
