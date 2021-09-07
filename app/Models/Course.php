@@ -66,7 +66,7 @@ class Course extends Model
             ->where('course_tag.course_id', $id);
     }
 
-    public function scopeTecherOfCourse($query, $id)
+    public function scopeTeacherOfCourse($query, $id)
     {
         $query->leftJoin('user_course', 'course.id', 'user_course.course_id')
             ->leftJoin('users', 'user_course.user_id', 'users.id')

@@ -269,13 +269,21 @@
     padding-left: 15px;
     padding-right: 15px;
 
-    p {
-      padding: 20px 0;
-      margin: 0;
+    a {
+      display: block;
+      padding-top: 14px;
+      padding-bottom: 14px;
+      line-height: 20px;
       font-size: 16px;
       font-weight: bold;
       font-family: "UTM";
       border-bottom: 1px solid $txt-description-color;
+      -webkit-text-stroke-width: 0.5px;
+      color: $txt-color ;
+
+      &:hover {
+        color: $bg-color;
+      }
     }
   }
 
@@ -348,3 +356,76 @@
     }
   }
 }
+
+.add-review {
+  font-family: "UTM";
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.02em;
+  color: $txt-color;
+}
+
+.message-add-review {
+  font-family: "UTM";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: $txt-color;
+}
+
+.btn-learn{
+  width: 80px;
+  background: $bg-color;
+}
+
+.rating {
+  float: left;
+}
+
+.rating:not(:checked) > input {
+  position: absolute;
+  display: none;
+}
+
+.rating:not(:checked) > label {
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 30px;
+  color: $body-bg;
+}
+
+.rating:not(:checked) > label:before {
+  content: "★ ";
+}
+
+.rating:not(:checked) .half:before {
+  content: "★ ";
+  position: absolute;
+  width: 8px;
+  margin-left: 18px;
+  overflow: hidden;
+}
+
+.rating > input:checked ~ label {
+  color: $rate;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: $star;
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: $yellow;
+}
+
+

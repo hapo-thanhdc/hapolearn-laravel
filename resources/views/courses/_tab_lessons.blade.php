@@ -10,9 +10,9 @@
     </form>
     <div class="col-lg-4 pr-0 align-self-center btn-join-container">
         @if (Auth::check() && $isJoined == true)
-        <a href="#" class="btn-join-course" id="btn-joined-course">Joined the course</a>
+            <a href="#" class="btn-join-course" id="btn-joined-course">Joined the course</a>
         @else
-        <a href="/insert/{{$course->id}}" class="btn-join-course" id="btn-join-course">Login and Join the course</a>
+            <a href="#" class="btn-join-course" id="btn-join-course">Login and Join the course</a>
         @endif
     </div>
 </div>

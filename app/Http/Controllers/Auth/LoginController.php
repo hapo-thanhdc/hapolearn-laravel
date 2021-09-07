@@ -53,8 +53,7 @@ class LoginController extends Controller
             $error = "Email or password you entered is incorrect";
             return redirect()->back()->withErrors($error);
         } else {
-
-            return redirect('/');
+            return redirect()->back();
         }
     }
 

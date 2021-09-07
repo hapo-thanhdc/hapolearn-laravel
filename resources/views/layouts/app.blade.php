@@ -24,6 +24,12 @@
     @yield('content')
     @include('layouts.footer')
 
+    @auth()
+    <script>
+        var userName = '{{\Illuminate\Support\Facades\Auth::user()->name}}';
+    </script>
+    @endauth
+
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://kit.fontawesome.com/ac80846b5c.js" crossorigin="anonymous"></script>
        
