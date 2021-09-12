@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Review;
 use App\Models\User;
-use App\Models\Tags;
+use App\Models\Tag;
 use App\Models\UserCourse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -18,20 +18,20 @@ class CourseController extends Controller
     {
         $courses = Course::orderBy('id')->paginate(config('constants.pagination'));
         $teachers = User::where('role', User::ROLE['teacher'])->get();
-        $tags = Tags::all();
+        $tags = Tag::all();
         return view('courses.index', compact('courses', 'teachers', 'tags'));
     }
 
-    public function courseSearch(Request $request)
+    public function search(Request $request)
     {
         $data = $request->all();
-        if (isset($data['search_form_input'])) {
-            $keyword = $data['search_form_input'];
+        if (isset($data['keyword'])) {
+            $keyword = $data['keyword'];
         } else {
             $keyword = '';
         }
         $teachers = User::where('role', User::ROLE['teacher'])->get();
-        $tags = Tags::all();
+        $tags = Tag::all();
         $courses = Course::filter($data)->paginate(config('constants.pagination'));
         return view('courses.index', compact('courses', 'teachers', 'tags', 'keyword'));
     }
@@ -42,8 +42,8 @@ class CourseController extends Controller
         $course = Course::find($id);
         $tags = Course::tagsCourse($id)->get();
         $otherCourses = Course::showOtherCourses($course->id)->get();
-        $teachers = Course::TeacherOfCourse($id)->get();
-        $lessons = Course::inforLessons($id)->paginate(config('constants.pagination_lessons'));
+        $teachers = Course::teacherOfCourse($id)->get();
+        $lessons = Course::infoLessons($id)->paginate(config('constants.pagination_lessons'));
         $isJoined = UserCourse::joined($id)->first() ? true : false;
         $reviews = Course::find($id)->reviews;
         $userIds = [];
@@ -53,7 +53,6 @@ class CourseController extends Controller
             }
         }
         $userInfos = User::whereIn('id', $userIds)->select('avatar', 'name', 'id')->get();
-
         $userInfoMap = [];
         if (!empty($userInfos)) {
             foreach ($userInfos as $userInfo) {
@@ -82,5 +81,13 @@ class CourseController extends Controller
           'user_id' => Auth::id(),
           'lesson_id' => 0,
         ]);
+    }
+
+    public function leave($id)
+    {
+        $course = Course::find($id);
+        $course->users()->detach(Auth::id());
+
+        return redirect()->route('allcourse');
     }
 }

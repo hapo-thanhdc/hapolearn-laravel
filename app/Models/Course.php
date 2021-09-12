@@ -31,7 +31,7 @@ class Course extends Model
 
     public function tags()
     {
-        return $this->belongsToMany(Tags::class, 'course_tag', 'course_id', 'tag_id');
+        return $this->belongsToMany(Tag::class, 'course_tag', 'course_id', 'tag_id');
     }
 
     public function users()
@@ -42,6 +42,34 @@ class Course extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class, 'course_id');
+    }
+
+    public function getNumberReviewAttribute(){
+        return $this->reviews()->count();
+    }
+
+    public function getNumberRateFiveAttribute(){
+        return $this->reviews()->where('rate',5)->count();
+    }
+
+    public function getNumberRateFourAttribute(){
+        return $this->reviews()->where('rate',4)->count();
+    }
+
+    public function getNumberRateThreeAttribute(){
+        return $this->reviews()->where('rate',3)->count();
+    }
+
+    public function getNumberRateTwoAttribute(){
+        return $this->reviews()->where('rate',2)->count();
+    }
+
+    public function getNumberRateOneAttribute(){
+        return $this->reviews()->where('rate',1)->count();
+    }
+    
+    public function getTotalRateAttribute(){
+        return $this->reviews()->avg('rate');
     }
 
     public function getNumberLessonAttribute()
@@ -74,7 +102,7 @@ class Course extends Model
             ->where('user_course.course_id', $id);
     }
 
-    public function scopeInforLessons($query, $id)
+    public function scopeInfoLessons($query, $id)
     {
         $query->join('lessons', 'course.id', '=', 'lessons.course_id')
             ->select('lessons.*')
@@ -117,11 +145,10 @@ class Course extends Model
 
         if (isset($data['learner'])) {
             if ($data['learner'] == config('constants.options.ascending')) {
-                $query->withCount([
-                    'users' => function ($subquery) {
+                $query->withCount([ 'users' => function ($subquery) {
                         $subquery->where('role', User::ROLE['student']);
                     }
-                ])->orderBy('users_count');
+])->orderBy('users_count');
             } elseif ($data['learner'] == config('constants.options.decrease')) {
                 $query->withCount([
                     'users' => function ($subquery) {
@@ -160,11 +187,11 @@ class Course extends Model
         if (isset($data['review'])) {
             if ($data['review'] == config('constants.options.ascending')) {
                 $query->addSelect(['rate' => Review::selectRaw('avg(rate) as total')
-                    ->whereColumn('course_id', 'courses.id')])
+                    ->whereColumn('course_id', 'course.id')])
                     ->orderBy('rate');
             } elseif ($data['review'] == config('constants.options.decrease')) {
                 $query->addSelect(['rate' => Review::selectRaw('avg(rate) as total')
-                    ->whereColumn('course_id', 'courses.id')])
+                    ->whereColumn('course_id', 'course.id')])
                     ->orderByDesc('rate');
             }
         }

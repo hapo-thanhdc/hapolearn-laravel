@@ -3,6 +3,8 @@
 return [
     'pagination' => 10,
 
+    'pagination_lessons' => 8,
+
     'role' => [
         'teacher' => 1,
         'student' => 0,
@@ -12,7 +14,11 @@ return [
         'newest' => 'newest',
         'oldest' => 'oldest',
         'ascending' => 'asc',
-        'decrease' => 'desc'
+        'descending' => 'desc'
+    ],
+
+    'course' => [
+        'limit' => 3,
     ],
 
     'variable' => [

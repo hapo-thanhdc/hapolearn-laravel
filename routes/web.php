@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('allcourses', [CourseController::class, 'index']);
-Route::get('search', [CourseController::class, 'courseSearch'])->name('search');
+Route::get('search', [CourseController::class, 'search'])->name('search');
 Route::get('courses/detail/{id}', [CourseController::class, 'detail'])->name('courses.detail');
 Route::get('allcourses/coursedetail/{id}/search', [LessonController::class, 'search'])->name('filterdetail');
 Route::get('insert/{id}', [CourseController::class, 'join'])->middleware('login');
