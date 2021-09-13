@@ -28,15 +28,15 @@
                                 <a class="nav-link" id="loginBtn" href="#" data-toggle="modal" data-target="#loginModal">LOGIN/REGISTER</a>
                             </li>
                         @endif
-                        <li class="nav-item menu-item">
-                            <a class="nav-link" href="#">PROFILE</a>
-                        </li>
                         @if (Auth::check())
                             <li class="nav-item menu-item">
                                 <form class="d-inline" method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <button type="submit" class="nav-link">LOG OUT</button>
                                 </form>
+                            </li>
+                            <li class="nav-item menu-item">
+                                <a class="nav-link" href="/profile">PROFILE</a>
                             </li>
                         @endif
                     </ul>

@@ -27,6 +27,13 @@
         <div class="button-login">
             <button type="submit" class="btn btn-primary login-button" id="login-btn">Login</button>
         </div>
+        @if(count($errors) > 0)
+            @foreach( $errors->all() as $error )
+            <div class="validate" role="alert">
+                <p class="errorLogin text-danger">{{ $error }}</p>
+            </div>
+            @endforeach
+        @endif
         <div class="social-title">
             <div class="line">
                 <span class="social-network-login-title">Login with</span>

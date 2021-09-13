@@ -2,6 +2,7 @@
 
 return [
     'pagination' => 10,
+    'pagination_lessons' => 20,
 
     'pagination_lessons' => 8,
 

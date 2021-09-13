@@ -44,7 +44,7 @@
                                     <p class="heading">{{ $maincourse->name }}</p>
                                     <p class="description">{{ $maincourse->description }}</p>
                                 </div>
-                                <a href="#" class="btn btn-default">Take This Course</a>
+                                <a href="{{ route('courses.detail', $maincourse->id) }}" class="btn btn-default">Take This Course</a>
                             </div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                                 <p class="heading">{{ $otherCourse->name }}</p>
                                 <p class="description">{{ $otherCourse->description }}</p>
                             </div>
-                            <a href="#" class="btn btn-default">Take This Course</a>
+                            <a href="{{ route('courses.detail', $otherCourse->id) }}" class="btn btn-default">Take This Course</a>
                         </div>
                     </div>
                 </div>
@@ -134,87 +134,31 @@
         </div>
         <div class="section-content">
             <div class="feed-slide">
-                <div>
-                    <div class="comment-wrapper">
-                        <div class="comment-content">
-                            <div class="line"></div>
-                            <div class="text">
-                                <p>“A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.”</p>
+                @foreach($reviews as $review)
+                    <div>
+                        <div class="comment-wrapper">
+                            <div class="comment-content">
+                                <div class="line"></div>
+                                <div class="text">
+                                    <p>{{ $review->comment }}</p>
+                                </div>
                             </div>
+                            <div class="triangle"></div>
                         </div>
-                        <div class="triangle"></div>
-                    </div>
-                    <div class="customer-wrapper">
-                        <div class="image">
-                            <img src="{{ asset('image/avatar_user.png') }}" alt="user">
-                        </div>
-                        <div class="detail">
-                            <p class="name fw-bold">Hoang Anh Nguyen</p>
-                            <p class="position">PHP</p>
-                            <div class="rate">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
+                        <div class="customer-wrapper">
+                            <div class="image">
+                                <img src="{{ $review->avatar }}" alt="user">
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="comment-wrapper">
-                        <div class="comment-content">
-                            <div class="line"></div>
-                            <div class="text">
-                                <p>“A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.”</p>
-                            </div>
-                        </div>
-                        <div class="triangle"></div>
-                    </div>
-                    <div class="customer-wrapper">
-                        <div class="image">
-                            <img src="{{ asset('image/avatar_user.png') }}" alt="user">
-                        </div>
-                        <div class="detail">
-                            <p class="name fw-bold">Tuan Tran Hoang</p>
-                            <p class="position">Python</p>
-                            <div class="rate">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
+                            <div class="detail">
+                                <p class="name fw-bold">{{ $review->user_name }}</p>
+                                <p class="position">{{ $review->course_name }}</p>
+                                <div class="rate">
+                                    <span class="star">{{ getRate($review->rate) }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div>
-                    <div class="comment-wrapper">
-                        <div class="comment-content">
-                            <div class="line"></div>
-                            <div class="text">
-                                <p>“A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.”</p>
-                            </div>
-                        </div>
-                        <div class="triangle"></div>
-                    </div>
-                    <div class="customer-wrapper">
-                        <div class="image">
-                            <img src="{{ asset('image/avatar_user.png') }}" alt="user-avtar">
-                        </div>
-                        <div class="detail">
-                            <p class="name fw-bold">Hoang Anh Nguyen</p>
-                            <p class="position">PHP</p>
-                            <div class="rate">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -239,15 +183,15 @@
         <div class="row content">
             <div class="col-xl-4 col-md-4 ">
                 <p>Courses</p>
-                <span class="counter">1,568</span>
+                <span class="counter">{{$courseNumber}}</span>
             </div>
             <div class="col-xl-4 col-md-4">
                 <p>Lessons</p>
-                <span class="counter">2,689</span>
+                <span class="counter">{{$lessonsNUmber}}</span>
             </div>
             <div class="col-xl-4 col-md-4">
                 <p>Learners</p>
-                <span class="counter">16,882</span>
+                <span class="counter">{{$learner}}</span>
             </div>
         </div>
     </div>

@@ -27,12 +27,12 @@
                         </div>
                         <div class="col-sm-3 btn-latest-oldest">
                             <input type="radio" class="btn-check inp-filter" value="{{config('constants.options.newest')}}"
-                                   name="sort" id="success-outlined"
+                                   name="newest_oldest" id="success-outlined"
                                     {{ request('newest_oldest') == "config('constants.options.newest')" ? 'checked' : '' }}>
                             <label class="btn btn-latest label-radio" for="success-outlined">Latest</label>
 
                             <input type="radio" class="btn-check inp-filter" value="{{config('constants.options.oldest')}}"
-                                   name="sort" id="danger-outlined"
+                                   name="newest_oldest" id="danger-outlined"
                                     {{ request('newest_oldest') == "config('constants.options.oldest')" ? 'checked' : '' }}>
                             <label class="btn btn-oldest label-radio" for="danger-outlined">Oldest</label>
                         </div>

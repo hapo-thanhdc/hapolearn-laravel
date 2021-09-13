@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Course;
 use App\Models\CourseTag;
+use App\Models\Tags;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CourseTagFactory extends Factory
@@ -23,7 +24,7 @@ class CourseTagFactory extends Factory
     public function definition()
     {
         return [
-            'tag_id' => 8,
+            'tag_id' => Tags::all()->unique()->random()->id,
             'course_id' => Course::all()->unique()->random()->id,
         ];
     }

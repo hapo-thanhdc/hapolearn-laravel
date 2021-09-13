@@ -34,4 +34,11 @@ class Review extends Model
     {
         return $this->belongsToMany(Users::class, 'user_id', 'id');
     }
+
+    public function scopeReviewUser($query)
+    {
+        $query->leftJoin('users', 'users.id', 'reviews.user_id')
+            ->leftJoin('course', 'course.id', 'reviews.course_id')
+            ->select('users.name AS user_name', 'course.name AS course_name', 'users.avatar', 'reviews.rate','reviews.comment');
+    }
 }

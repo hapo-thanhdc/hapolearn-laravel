@@ -24,8 +24,8 @@ class CourseFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'icon' => $this->faker->imageUrl(),
-            'quizzes' => $this->faker->numberBetween(1, 20000),
-            'price' => $this->faker->randomFloat(0.01, 0, 1000000),
+            'quizzes' => $this->faker->numberBetween(100, 20000),
+            'price' => $this->faker->randomFloat(2, 0, 1000000),
             'description' => $this->faker->paragraph
         ];
     }

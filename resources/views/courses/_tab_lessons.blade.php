@@ -9,10 +9,12 @@
         </div>
     </form>
     <div class="col-lg-4 pr-0 align-self-center btn-join-container">
-        @if (Auth::check() && $isJoined == true)
+        @if(!Auth::check())
+            <a href="#" class="btn-join-course" id="btn-login-join-course">Login and Joined the course</a>
+        @elseif(Auth::check() && $isJoined == true)
             <a href="#" class="btn-join-course" id="btn-joined-course">Joined the course</a>
         @else
-            <a href="#" class="btn-join-course" id="btn-join-course">Login and Join the course</a>
+            <a href="/insert/{{ $course->id }}" class="btn-join-course" id="btn-join-course"> Join the course</a>
         @endif
     </div>
 </div>
@@ -25,7 +27,7 @@
             </div>
             <div class="col-lg-4 pl-0 btn-more-lessons">
                 @if (Auth::check() && $isJoined == true)
-                <a href="allcourses/detail/lessondetail/{{$lesson->id}}">Learn</a>
+                <a href={{route('lessons.detail',$lesson->id)}}>Learn</a>
                 @endif
             </div>
         </div>
