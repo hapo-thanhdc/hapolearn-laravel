@@ -1,0 +1,493 @@
+.course-detail-container {
+  width: 85%;
+  margin: auto;
+
+  .form-search-detail {
+    width: 69%;
+  }
+}
+
+.img-container {
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  img {
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
+  }
+}
+
+.description-detail-course {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: 15px;
+  border: 1px solid $border-detail-color;
+  height: 500px;
+
+  .title-description-container {
+    padding: 15px;
+
+    .title-description {
+      font-family: "UTM";
+      font-weight: 700;
+      font-size: 25px;
+      color: $txt-color;
+      border-bottom: 1px $bg-color solid;
+    }
+  }
+
+  .description-container {
+    padding: 15px;
+
+    .description {
+      font-family: "UTM";
+      font-weight: 700;
+      font-size: 18px;
+      color: $txt-description-color;
+    }
+  }
+}
+
+.nav-course-detail-container {
+  background-color: white;
+  border-radius: 10px 10px 0 0;
+
+  .nav-tabs .nav-link.active,
+  .nav-tabs .nav-item.show .nav-link {
+    border: unset;
+    border-bottom: 2px solid $bg-color;
+    background-color: white;
+    color: $bg-color;
+  }
+
+  .nav-tabs {
+    border: unset;
+    border-bottom: 2px solid $border-detail-color;
+  }
+}
+
+.nav-course-detail {
+  width: 95%;
+  margin: auto;
+  padding: 15px 0;
+
+  .nav-item {
+    border-radius: unset;
+    border: unset;
+
+    &:hover {
+      background-color: unset;
+    }
+  }
+
+  .btn-nav-detail {
+    font-family: "UTM";
+    font-weight: 700;
+    font-size: 20px;
+    color: $txt-color;
+    text-decoration: none;
+    padding: 0;
+    display: initial;
+    padding-bottom: 19px;
+
+    &:hover {
+      color: $bg-color;
+      border: unset;
+    }
+  }
+}
+
+.lessons-teacher-reiews-container {
+  background-color: white;
+  border-radius: 0 0 10px 10px;
+
+  .tab-content {
+    width: 95%;
+
+    .tab-pane {
+      padding: 30px 0;
+      margin: 0;
+    }
+  }
+}
+
+.detail-lessons-container {
+  margin-bottom: 30px;
+
+  .detail-lessons {
+    .search-lessons {
+      height: 40px;
+      color: black;
+    }
+  }
+
+  .btn-search-lessons {
+    .btn-search {
+      width: 100px;
+      height: 40px;
+      background: $bg-color;
+      border-radius: 5px;
+      border: none;
+      color: white;
+      font-family: "UTM";
+      font-weight: bold;
+      font-size: 18px;
+
+      &:hover {
+        color: $txt-color;
+      }
+    }
+  }
+
+  .btn-join-container {
+    text-align: right;
+
+    .btn-join-course {
+      padding: 9px 16px;
+      background: $bg-color;
+      box-shadow: $box-shadow-btn;
+      border-radius: 22px;
+      border: unset;
+      color: white;
+      font-family: "UTM";
+      font-weight: bold;
+      font-size: 18px;
+
+      &:hover {
+        color: $txt-color;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.show-lessons-container {
+  .txt-title-lessons {
+    padding: 20px 0;
+    font-family: "UTM";
+    font-size: 18px;
+    font-weight: bold;
+    color: $txt-color;
+    margin: 0;
+    border-top: 1px solid $border-detail-color;
+    cursor: pointer;
+
+    &:hover {
+      color: $bg-color;
+    }
+  }
+
+  .btn-more-lessons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-top: 1px solid $border-detail-color;
+
+    a {
+      background: $bg-color;
+      box-shadow: $box-shadow-btn;
+      border-radius: 22px;
+      color: white;
+      font-family: "UTM";
+      font-size: 15px;
+      font-weight: bold;
+      width: 80px;
+      height: 30px;
+      text-align: center;
+
+      &:hover {
+        text-decoration: none;
+        color: $txt-color;
+      }
+    }
+  }
+}
+
+.pagination-container {
+  nav {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.col-show-other {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 1px solid $border-detail-color;
+
+  .row-detail {
+    padding: 15px 0;
+  }
+
+  .col-icon {
+    text-align: center;
+  }
+
+  .col-txt {
+    p {
+      margin: 0;
+      font-family: "UTM";
+      font-size: 19px;
+      color: $txt-color;
+    }
+  }
+
+  .col-txt-main {
+    p {
+      font-weight: 700;
+    }
+  }
+
+  .col-txt-tags {
+    p {
+      color: $txt-tags-color;
+    }
+  }
+}
+
+.show-other-courses-container {
+  margin-top: 25px;
+  background: white;
+  border: 1px solid $txt-description-color;
+
+  .txt-show-other-courses {
+    text-align: center;
+    background: $bg-color;
+
+    p {
+      padding: 15px;
+      margin: 0;
+      color: white;
+      font-family: "UTM";
+      font-weight: bold;
+      font-size: 25px;
+    }
+  }
+
+  .show-other-courses {
+    padding-left: 15px;
+    padding-right: 15px;
+
+    a {
+      display: block;
+      padding-top: 14px;
+      padding-bottom: 14px;
+      line-height: 20px;
+      font-size: 16px;
+      font-weight: bold;
+      font-family: "UTM";
+      border-bottom: 1px solid $txt-description-color;
+      -webkit-text-stroke-width: 0.5px;
+      color: $txt-color ;
+
+      &:hover {
+        color: $bg-color;
+      }
+    }
+  }
+
+  .btn-view-all {
+    text-align: center;
+    margin: 30px 0;
+
+    a {
+      padding: 8px 18px;
+      background: $bg-color;
+      box-shadow: $box-shadow-btn;
+      border-radius: 22px;
+      font-family: "UTM";
+      font-size: 18px;
+      color: white;
+      font-weight: bold;
+    }
+  }
+}
+
+.detail-teacher-container {
+  .row-infor-mentor {
+    margin-top: 30px;
+  }
+
+  .txt-main-teacher {
+    p {
+      font-family: "UTM";
+      color: $txt-color;
+      font-size: 25px;
+      font-weight: bold;
+    }
+  }
+
+  .col-ava-mentor {
+    img {
+      border-radius: 50%;
+      height: 100px;
+      width: 100px;
+    }
+  }
+
+  .infor-mentor {
+    .name-mentor {
+      font-family: "UTM";
+      font-size: 18px;
+      color: $txt-color;
+      font-weight: bold;
+    }
+
+    .social-mentor {
+      img {
+        width: 20px;
+      }
+    }
+
+    .exp-mentor {
+      font-family: "UTM";
+      font-size: 14px;
+      color: $txt-description-color;
+      padding-bottom: 5px;
+    }
+  }
+
+  .description-mentor {
+    p {
+      font-family: "UTM";
+      font-size: 18px;
+      color: $txt-description-color;
+    }
+  }
+}
+
+.add-review {
+  font-family: "UTM";
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.02em;
+  color: $txt-color;
+}
+
+.message-add-review {
+  font-family: "UTM";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: $txt-color;
+}
+
+.btn-learn{
+  width: 80px;
+  background: $bg-color;
+}
+
+.rating {
+  float: left;
+}
+
+.rating:not(:checked) > input {
+  position: absolute;
+  display: none;
+}
+
+.rating:not(:checked) > label {
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 30px;
+  color: $body-bg;
+}
+
+.rating:not(:checked) > label:before {
+  content: "★ ";
+}
+
+.rating:not(:checked) .half:before {
+  content: "★ ";
+  position: absolute;
+  width: 8px;
+  margin-left: 18px;
+  overflow: hidden;
+}
+
+.rating > input:checked ~ label {
+  color: $rate;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: $star;
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: $yellow;
+}
+
+.review-content {
+  .review-name-user {
+    font-family: UTM;
+    font-weight: bold;
+    line-height: 22px;
+    font-size: 20px;
+    color: $txt-color;
+  }
+
+  span {
+    color: $star;
+  }
+
+  .review-comment {
+    font-family: UTM;
+    font-size: 18px;
+    line-height: 26px;
+    color: $txt-description-color;
+  }
+}
+
+.text-center {
+  left: 24px;
+  width: 244px;
+  height: 176px;
+  background: $txt_color;
+  border-radius: 5px;
+
+  .rating-num {
+    font-family: UTM;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 74px;
+    color: $background_white;
+  }
+
+  .rating-total {
+    span {
+      font-family: UTM;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 20px;
+      color: $background_white;
+    }
+  }
+}
+
+.rating-desc {
+  height: 176px;
+  border: 1px solid #DFDFDF;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.rating-review {
+    i {
+        color: $yellow;
+    }
+}
+
+.progress {
+  border-radius: 2px;
+}

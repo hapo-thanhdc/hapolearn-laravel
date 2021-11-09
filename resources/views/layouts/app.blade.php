@@ -9,9 +9,6 @@
 
      <title>{{ config('app.name', 'hapolearn') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -26,7 +23,12 @@
     @include('layouts.header')
     @yield('content')
     @include('layouts.footer')
-    @include('layouts.messenger')
+
+    @auth()
+    <script>
+        var userName = '{{\Illuminate\Support\Facades\Auth::user()->name}}';
+    </script>
+    @endauth
 
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://kit.fontawesome.com/ac80846b5c.js" crossorigin="anonymous"></script>

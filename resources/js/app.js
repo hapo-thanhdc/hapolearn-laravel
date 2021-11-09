@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 require('slick-carousel');
+require('select2');
 require('popper.js');
 require('./style');
 import $ from "jquery";

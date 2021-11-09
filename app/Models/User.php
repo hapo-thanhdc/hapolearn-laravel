@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -58,7 +59,7 @@ class User extends Authenticatable
 
     public function courses()
     {
-        return $this->belongsToMany(Course::class, 'user_courses', 'course_id', 'user_id');
+        return $this->belongsToMany(Course::class,'user_course','user_id',"course_id");
     }
 
     public function lessons()
@@ -68,6 +69,31 @@ class User extends Authenticatable
 
     public function reviews()
     {
-        return $this->hasMany(Reviews::class, 'user_id', 'id');
+        return $this->hasMany(Reviews::class, 'user_id');
+    }
+
+    public function scopeTeacher($query)
+    {
+        return $query->where('role', User::ROLE['teacher']);
+    }
+
+    public function ducuments()
+    {
+        return $this->belongsToMany(Document::class, 'document_users', 'user_id', 'document_id');
+    }
+
+    public function scopeStudents($query)
+    {
+        $query->where('role', User::ROLE['student']);
+    }
+
+    public function scopeCourseAttended($query)
+    {
+        $query->join('user_course', 'users.id', 'user_course.user_id')
+            ->join('course', 'user_course.course_id', 'course.id')
+            ->where('users.id', '=', Auth::user()->id)
+            ->limit(5)
+            ->orderByDesc('course_id')
+            ->get('course.*');
     }
 }

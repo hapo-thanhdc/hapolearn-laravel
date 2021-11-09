@@ -11,6 +11,8 @@ class CourseTag extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $table = "course_tag";
+
     protected $fillable = [
         'course_id',
         'tag_id',

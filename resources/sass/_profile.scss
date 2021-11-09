@@ -1,0 +1,181 @@
+.profile-container {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  background-color: $input-color;
+
+  .main-profile {
+    width: 90%;
+    margin: auto;
+
+    .profile {
+      text-align: center;
+    }
+
+    hr {
+      width: 260px;
+    }
+  }
+
+  .avatar-user {
+    text-align: center;
+
+    img {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+    }
+  }
+
+  .profile-user {
+    padding-top: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    display: inline-block;
+
+    .name-user {
+      font-family: UTM;
+      font-weight: bold;
+      font-size: 25px;
+      color: $txt-color;
+    }
+
+    .email-user {
+      font-family: UTM;
+      font-weight: bold;
+      font-size: 18px;
+      color: $txt-color;
+      padding-bottom: 0.5rem;
+    }
+  }
+
+  .description-user {
+    display: flex;
+    flex-direction: row;
+    width: 260px;
+    margin: auto;
+    align-items: center;
+
+    img {
+      height: 17px;
+      width: 20px;
+    }
+
+    .txt-user {
+      font-size: 18px;
+      font-family: UTM;
+      color: $txt-color;
+      margin-left: 10px;
+      margin-bottom: 0;
+    }
+  }
+
+  .about-user-profile {
+    margin: auto;
+    width: 260px;
+    text-align: left;
+
+    p {
+      font-size: 18px;
+      font-family: UTM;
+      color: $txt-color;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.edit-profile-container {
+  margin-top: 130px;
+
+  .txt-my-profile {
+    border-bottom: 1px solid $bg-color;
+
+    p {
+      font-family: UTM;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 38px;
+      line-height: 47px;
+      color: $txt-color;
+      margin: 0;
+    }
+  }
+
+  .img-your-courses {
+    border-top: 1px solid $bg-color;
+    margin-top: 2px;
+    padding: 25px 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
+
+  .img-your-course {
+    margin: 0 10px;
+
+    img {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+    }
+
+    .img_add {
+      cursor: pointer;
+    }
+  }
+
+  .edit-profile-input {
+    border-top: 1px solid $bg-color;
+    margin-top: 2px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 25px 0;
+
+    .edit-input-label {
+      margin-bottom: 5px;
+      margin-top: 15px;
+      font-family: UTM;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 25px;
+      color: $txt-color;
+    }
+
+    .edit-input-profile {
+      color: black;
+    }
+
+    .btn-save-profile {
+      width: 100px;
+      height: 40px;
+      background-color: $bg-color;
+      border: 1px solid $bg-color;
+      border-radius: 5px;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      font-family: UTM;
+
+      &:hover {
+        color: $txt-color;
+      }
+    }
+  }
+}
+
+.icon-upload-ava {
+  margin: 10px;
+  cursor: pointer;
+  font-size: 30px;
+  position: absolute;
+  color: $color-feedback;
+  opacity: 0.8;
+  top: 13rem;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.input-upload-ava {
+  display: none;
+}
